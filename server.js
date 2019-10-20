@@ -6,7 +6,7 @@ var path = require("path");
 
 var db = mongoose.connection;
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -55,11 +55,19 @@ db.once("open", function() {
   });
 });
 
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsiesScraper";
 // Connect to the Mongo DB
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+/*
 mongoose.connect("mongodb://localhost/newsiesScraper", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+*/
 
 // Routes
 require("./routes/apiRoutes")(app);
