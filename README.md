@@ -6,8 +6,13 @@ The app performs a web scrape from Google News, and displays the stories in a ne
 
 ## Installation
 1. Clone this Git repository
+    - `$ git clone https://github.com/az9000/Newsies.git`
+    
 1. Install dependencies
+    - `$ npm install`
+    
 1. Run app
+    - `$ node server.js`
 
 ## Demo
 [Heroku demo!](https://still-eyrie-90776.herokuapp.com/)
